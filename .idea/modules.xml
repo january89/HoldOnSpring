@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HoldOnSpring.iml" filepath="$PROJECT_DIR$/.idea/modules/HoldOnSpring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HoldOnSpring_main.iml" filepath="$PROJECT_DIR$/.idea/modules/HoldOnSpring_main.iml" group="HoldOnSpring" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HoldOnSpring_test.iml" filepath="$PROJECT_DIR$/.idea/modules/HoldOnSpring_test.iml" group="HoldOnSpring" />
+    </modules>
+  </component>
+</project>
