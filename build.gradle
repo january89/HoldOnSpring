@@ -21,9 +21,10 @@ dependencies {
     compile group:springGroup, name:'spring-context-support',version:springVersion
 
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0-b01'
-    runtime group: 'javax.servlet.jsp.jstl', name: 'javax.servlet.jsp.jstl-api', version: '1.2.1'
+//    runtime group: 'javax.servlet.jsp.jstl', name: 'javax.servlet.jsp.jstl-api', version: '1.2.1'
 
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
     compile group: 'org.sitemesh', name: 'sitemesh', version: '3.0.1'
+    compile group: 'org.thymeleaf', name: 'thymeleaf-spring4', version: '3.0.0.RELEASE'
 
 }
