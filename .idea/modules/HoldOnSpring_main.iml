@@ -3,10 +3,10 @@
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="fileset" name="Application Context" removed="false">
-          <file>file://$MODULE_DIR$/../../src/main/java/com/ApplicationContext.java</file>
-          <file>file://$MODULE_DIR$/../../src/main/java/com/WebMvcConfig.java</file>
-          <file>file://$MODULE_DIR$/../../src/main/java/com/PersistenceContext.java</file>
+        <fileset id="fileset2" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/../../src/main/java/common/ApplicationContext.java</file>
+          <file>file://$MODULE_DIR$/../../src/main/java/common/PersistenceContext.java</file>
+          <file>file://$MODULE_DIR$/../../src/main/java/common/WebMvcConfig.java</file>
         </fileset>
       </configuration>
     </facet>

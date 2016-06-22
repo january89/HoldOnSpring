@@ -1,4 +1,4 @@
-package com;
+package common;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +24,6 @@ class PersistenceContext {
     private static final String[] PROPERTY_PACKAGES_TO_SCAN = {
             "main.domain"
     };
-
     private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
     private static final String PROPERTY_NAME_DATABASE_PASSWORD = "db.password";
     private static final String PROPERTY_NAME_DATABASE_URL = "db.url";

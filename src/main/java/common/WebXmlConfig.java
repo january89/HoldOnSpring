@@ -1,7 +1,9 @@
-package com;
+package common;
 
 import org.sitemesh.builder.SiteMeshFilterBuilder;
 import org.sitemesh.config.ConfigurableSiteMeshFilter;
+import org.sitemesh.content.tagrules.html.DivExtractingTagRuleBundle;
+import org.sitemesh.content.tagrules.html.Sm2TagRuleBundle;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -40,11 +42,10 @@ public class WebXmlConfig implements WebApplicationInitializer{
             @Override
             protected void applyCustomConfiguration(SiteMeshFilterBuilder builder){
                 builder.addDecoratorPath(ASTERISK, "/WEB-INF/layout/layout.jsp");
+                builder.addTagRuleBundles(new DivExtractingTagRuleBundle());
             }
         });
         sitemesh.addMappingForUrlPatterns(dispatcherTypes, true, "*.jsp");
-
-
         servletContext.addListener(new ContextLoaderListener(rootContext));
     }
 
