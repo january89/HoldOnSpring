@@ -1,34 +1,51 @@
-ext{
+ext {
     versions = [
-
-            jdk:'1.8',
-            spring:'4.3.0.RELEASE',
-            hibernate:'5.2.0.Final',
-            hibernateValidator:'5.3.0.Alpha1',
-            springdatajpa:'1.10.2.RELEASE',
-            hikariCP: '2.4.6',
-            mysqldriver:'6.0.2',
-            sitemesh:'3.0.1',
-            junit:'4.12',
-            lombok:'1.16.8',
-            jackson: '2.8.0.rc2',
-            slf4j: '1.7.21'
-
+            jdk               : '1.8',
+            spring            : '4.3.0.RELEASE',
+            hibernate         : '5.2.0.Final',
+            hibernateValidator: '5.3.0.Alpha1',
+            springdatajpa     : '1.10.2.RELEASE',
+            hikariCP          : '2.4.6',
+            mysqldriver       : '5.1.39',
+            sitemesh          : '3.0.1',
+            junit             : '4.12',
+            lombok            : '1.16.8',
+            jackson           : '2.8.0.rc2',
+            querydsl          : '3.7.2',
+            slf4j             : '1.7.21',
+            bootstrap         : '4.0.0-alpha.2',
+            jquery            : '3.0.0'
     ]
 }
 
+sourceCompatibility = versions.jdk
+targetCompatibility = versions.jdk
+
 dependencies {
 
-    // spring
-    compile("org.springframework:spring-webmvc:${versions.spring}")
-    compile("org.springframework:spring-context:${versions.spring}")
-    compile("org.springframework:spring-context-support:${versions.spring}")
+    def groupName;
+
+    // front
+    groupName = 'org.webjars.bower'
+    compile("${groupName}:bootstrap:${versions.bootstrap}")
+    compile("${groupName}:jquery:${versions.jquery}")
     compile("org.sitemesh:sitemesh:${versions.sitemesh}")
 
+    // spring
+    groupName = 'org.springframework'
+    compile("${groupName}:spring-webmvc:${versions.spring}")
+    compile("${groupName}:spring-context:${versions.spring}")
+    compile("${groupName}:spring-context-support:${versions.spring}")
+
     // persistence
+    groupName = 'org.hibernate'
     compile("org.springframework.data:spring-data-jpa:${versions.springdatajpa}")
-    compile("org.hibernate:hibernate-core:${versions.hibernate}")
-    compile("org.hibernate:hibernate-validator:${versions.hibernateValidator}")
+    compile("${groupName}:hibernate-core:${versions.hibernate}")
+    compile("${groupName}:hibernate-validator:${versions.hibernateValidator}")
+
+    groupName = 'com.mysema.querydsl'
+    compile("${groupName}:querydsl-jpa:${versions.querydsl}")
+    compile("${groupName}:querydsl-sql:${versions.querydsl}")
 
     // jspPage
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
@@ -39,10 +56,11 @@ dependencies {
     compile("mysql:mysql-connector-java:${versions.mysqldriver}")
 
     // util
+    groupName = 'com.fasterxml.jackson.core'
     compile("org.projectlombok:lombok:${versions.lombok}")
-    compile("com.fasterxml.jackson.core:jackson-annotations:${versions.jackson}")
-    compile("com.fasterxml.jackson.core:jackson-core:${versions.jackson}")
-    compile("com.fasterxml.jackson.core:jackson-databind:${versions.jackson}")
+    compile("${groupName}:jackson-annotations:${versions.jackson}")
+    compile("${groupName}:jackson-core:${versions.jackson}")
+    compile("${groupName}:jackson-databind:${versions.jackson}")
 
     // test
     testCompile("org.springframework:spring-test:${versions.spring}")

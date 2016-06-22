@@ -12,6 +12,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 @Import({ WebMvcConfig.class, PersistenceContext.class })
 @PropertySource("classpath:application.properties")
 public class ApplicationContext{
+
     private static final String MESSAGE_SOURCE_BASE_NAME = "i18n/messages";
 
     @Bean
@@ -26,6 +27,5 @@ public class ApplicationContext{
     public static PropertySourcesPlaceholderConfigurer propertyPlaceHolderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
-
 
 }

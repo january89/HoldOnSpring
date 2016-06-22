@@ -4,7 +4,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'war'
 
-//war.archiveName='ROOTBack.war'
+war.archiveName='ROOTBack.war'
 
 apply from :'./gradle/lib.gradle'
 apply from :'./gradle/profile.gradle'
@@ -19,7 +19,7 @@ targetCompatibility = versions.jdk
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 //리파지토리
-repositories {   mavenCentral() }
+repositories { mavenCentral() }
 
 
 

@@ -1,6 +1,11 @@
 package main.domain;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import main.entity.Hello;
 
-public interface HelloDao extends JpaRepository<Hello, Integer> {
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
+
+public interface HelloDao extends CrudRepository<Hello, Integer> {
+    List<Hello> findByLastName(String lastName);
 }
