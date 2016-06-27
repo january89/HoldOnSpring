@@ -12,9 +12,10 @@ ext {
             lombok            : '1.16.8',
             jackson           : '2.8.0.rc2',
             querydsl          : '3.7.2',
-            slf4j             : '1.7.21',
+            logback           : '1.1.7',
             bootstrap         : '4.0.0-alpha.2',
-            jquery            : '3.0.0'
+            jquery            : '3.0.0',
+            react             : '15.2.0-rc.1'
     ]
 }
 
@@ -26,9 +27,11 @@ dependencies {
     def groupName;
 
     // front
-    groupName = 'org.webjars.bower'
+    groupName = 'org.webjars.npm'
     compile("${groupName}:bootstrap:${versions.bootstrap}")
     compile("${groupName}:jquery:${versions.jquery}")
+    compile("${groupName}:react:${versions.react}")
+    compile("${groupName}:react-dom:${versions.react}")
     compile("org.sitemesh:sitemesh:${versions.sitemesh}")
 
     // spring
@@ -65,5 +68,8 @@ dependencies {
     // test
     testCompile("org.springframework:spring-test:${versions.spring}")
     testCompile("junit:junit:${versions.junit}")
+    compile("ch.qos.logback:logback-classic:${versions.logback}"){
+        exclude group: 'org.slf4j', module: 'slf4j-api'
+    }
 
 }

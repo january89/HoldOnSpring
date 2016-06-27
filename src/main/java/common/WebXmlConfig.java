@@ -1,9 +1,5 @@
 package common;
 
-import org.sitemesh.builder.SiteMeshFilterBuilder;
-import org.sitemesh.config.ConfigurableSiteMeshFilter;
-import org.sitemesh.content.tagrules.html.DivExtractingTagRuleBundle;
-import org.sitemesh.content.tagrules.html.Sm2TagRuleBundle;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -22,6 +18,7 @@ public class WebXmlConfig implements WebApplicationInitializer{
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
+
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
         rootContext.register(ApplicationContext.class);
 
@@ -31,22 +28,18 @@ public class WebXmlConfig implements WebApplicationInitializer{
 
         EnumSet<DispatcherType> dispatcherTypes = EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD);
 
+        FilterRegistration.Dynamic characterEncoding = servletContext.addFilter("characterEncoding", EncodingFilter());
+        characterEncoding.addMappingForUrlPatterns(dispatcherTypes, true, ASTERISK);
+
+        servletContext.addListener(new ContextLoaderListener(rootContext));
+
+    }
+
+    CharacterEncodingFilter EncodingFilter(){
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding(ENCODE);
         characterEncodingFilter.setForceEncoding(true);
-
-        FilterRegistration.Dynamic characterEncoding = servletContext.addFilter("characterEncoding", characterEncodingFilter);
-        characterEncoding.addMappingForUrlPatterns(dispatcherTypes, true, ASTERISK);
-
-        FilterRegistration.Dynamic sitemesh = servletContext.addFilter("sitemesh", new ConfigurableSiteMeshFilter(){
-            @Override
-            protected void applyCustomConfiguration(SiteMeshFilterBuilder builder){
-                builder.addDecoratorPath(ASTERISK, "/WEB-INF/layout/layout.jsp");
-                builder.addTagRuleBundles(new DivExtractingTagRuleBundle());
-            }
-        });
-        sitemesh.addMappingForUrlPatterns(dispatcherTypes, true, "*.jsp");
-        servletContext.addListener(new ContextLoaderListener(rootContext));
+        return characterEncodingFilter;
     }
 
 }

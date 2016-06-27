@@ -12,12 +12,13 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
 @EnableJpaRepositories(basePackages = {
-        "main.repository"
+        "main.service"
 })
 @EnableTransactionManagement
 class PersistenceContext {
@@ -69,6 +70,7 @@ class PersistenceContext {
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         entityManagerFactoryBean.setPackagesToScan(PROPERTY_PACKAGES_TO_SCAN);
         entityManagerFactoryBean.setJpaProperties(hibernateProperties());
+        entityManagerFactoryBean.setPersistenceUnitName("hibernatePersistenceUnit");
         return entityManagerFactoryBean;
     }
 

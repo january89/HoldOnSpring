@@ -38,10 +38,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="/js/clean-blog.min.js"></script>
 
-    <![endif]-->
+    <!--[endif]-->
 </head>
-
-<body>
 
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -70,7 +68,7 @@
                     <a href="/post">게시물 작성</a>
                 </li>
                 <li>
-                    <a href="/contact">이력서</a>
+                    <a href="/contact/asd/ddd">이력서</a>
                 </li>
             </ul>
         </div>
@@ -131,5 +129,19 @@
         </div>
     </div>
 </footer>
-</body>
-</html>
+
+<!-- Post Form -->
+<div id="postform">
+    <form>
+        <fieldset class="form-group">
+            <label for="postName">제목</label>
+            <input type="text" class="form-control" id="postName" placeholder="제목을 입력하세요.">
+            <small class="text-muted">We'll never share your email with anyone else.</small>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="postTextarea">내용</label>
+            <textarea class="form-control" id="postTextarea" rows="15"></textarea>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

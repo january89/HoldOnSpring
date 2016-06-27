@@ -1,7 +1,9 @@
 package main.service;
 
-/**
- * Created by Park Tae Hwan on 2016-06-17.
- */
-public class MainServiceImpl implements MainService{
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+class MainServiceImpl implements MainService{
 }
