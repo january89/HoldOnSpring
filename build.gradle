@@ -12,26 +12,14 @@ apply from :'./gradle/profile.gradle'
 buildDir = 'build'
 
 //자바 버젼
-sourceCompatibility = versions.jdk
-targetCompatibility = versions.jdk
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 //UTF-8
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 //리파지토리
 repositories { mavenCentral() }
-
-
-
-
-
-
-
-
-
-
-
-
 
 //dependencies {
 //

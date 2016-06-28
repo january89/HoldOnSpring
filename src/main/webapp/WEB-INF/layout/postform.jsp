@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <form>
     <fieldset class="form-group">
         <label for="postName">제목</label>

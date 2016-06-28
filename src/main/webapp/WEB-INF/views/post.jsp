@@ -1,12 +1,17 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="ko">
-<head><sitemesh:write property='head'/></head>
+<head>
+    <meta charset="UTF-8" />
+    <title>React Tutorial</title>
+    <jsp:include page="/WEB-INF/layout/head.jsp" flush="true"/>
+</head>
 <body>
-<nav><sitemesh:write property='nav'/></nav>
-<div><sitemesh:write property='div.postform'/></div>
+<jsp:include page="/WEB-INF/layout/header.jsp" flush="true"/>
+<jsp:include page="/WEB-INF/layout/nav.jsp" flush="true"/>
+<jsp:include page="/WEB-INF/layout/postform.jsp" flush="true"/>
 
-<footer><sitemesh:write property='footer'/></footer>
 </body>
 </html>

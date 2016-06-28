@@ -1,6 +1,11 @@
-ext {
-    versions = [
-            jdk               : '1.8',
+dependencies {
+
+    def compileMaker = { a , b , c -> compile( a + ':' + b + ':' + c ) }
+    def providedCompileMaker = { a , b , c -> providedCompile( a + ':' + b + ':' + c ) }
+    def testCompileMaker = { a , b , c -> testCompile( a + ':' + b + ':' + c ) }
+    def runtimeMaker = { a , b , c -> runtime( a + ':' + b + ':' + c ) }
+
+    def versions = [
             spring            : '4.3.0.RELEASE',
             hibernate         : '5.2.0.Final',
             hibernateValidator: '5.3.0.Alpha1',
@@ -14,61 +19,113 @@ ext {
             querydsl          : '3.7.2',
             logback           : '1.1.7',
             bootstrap         : '4.0.0-alpha.2',
-            jquery            : '3.0.0',
-            react             : '15.2.0-rc.1'
+            jquery            : '3.0.0'
     ]
-}
 
-sourceCompatibility = versions.jdk
-targetCompatibility = versions.jdk
-
-dependencies {
-
-    def groupName;
+    def groupId;
+    def artifactId;
+    def version;
 
     // front
-    groupName = 'org.webjars.npm'
-    compile("${groupName}:bootstrap:${versions.bootstrap}")
-    compile("${groupName}:jquery:${versions.jquery}")
-    compile("${groupName}:react:${versions.react}")
-    compile("${groupName}:react-dom:${versions.react}")
-    compile("org.sitemesh:sitemesh:${versions.sitemesh}")
+    groupId = 'org.webjars.npm'
+
+    artifactId = 'bootstrap'
+    version = versions.bootstrap
+    compileMaker( groupId , artifactId , version )
+
+    artifactId = 'jquery'
+    version = versions.jquery
+    compileMaker( groupId , artifactId , version )
+
+    groupId = 'org.sitemesh'
+    artifactId = 'sitemesh'
+    version = versions.sitemesh
+    compileMaker( groupId , artifactId , version )
 
     // spring
-    groupName = 'org.springframework'
-    compile("${groupName}:spring-webmvc:${versions.spring}")
-    compile("${groupName}:spring-context:${versions.spring}")
-    compile("${groupName}:spring-context-support:${versions.spring}")
+    groupId = 'org.springframework'
+    version = versions.spring
+
+    artifactId = 'spring-webmvc'
+    compileMaker( groupId , artifactId , version )
+    artifactId = 'spring-context'
+    compileMaker( groupId , artifactId , version )
+    artifactId = 'spring-context-support'
+    compileMaker( groupId , artifactId , version )
+    artifactId = 'spring-test'
+    testCompileMaker( groupId , artifactId , version )
 
     // persistence
-    groupName = 'org.hibernate'
-    compile("org.springframework.data:spring-data-jpa:${versions.springdatajpa}")
-    compile("${groupName}:hibernate-core:${versions.hibernate}")
-    compile("${groupName}:hibernate-validator:${versions.hibernateValidator}")
+    groupId = 'org.springframework.data'
 
-    groupName = 'com.mysema.querydsl'
-    compile("${groupName}:querydsl-jpa:${versions.querydsl}")
-    compile("${groupName}:querydsl-sql:${versions.querydsl}")
+    artifactId = 'spring-data-jpa'
+    version = versions.springdatajpa
+    compileMaker( groupId , artifactId , version )
+
+    groupId = 'org.hibernate'
+
+    artifactId = 'hibernate-core'
+    version = versions.hibernate
+    compileMaker( groupId , artifactId , version )
+
+    artifactId = 'hibernate-validator'
+    version = versions.hibernateValidator
+    compileMaker( groupId , artifactId , version )
+
+    groupId = 'com.mysema.querydsl'
+    version = versions.querydsl
+
+    artifactId = 'querydsl-jpa'
+    compileMaker( groupId , artifactId , version )
+    artifactId = 'querydsl-sql'
+    compileMaker( groupId , artifactId , version )
 
     // jspPage
-    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
-    runtime 'javax.servlet:jstl:1.2'
+    groupId = 'javax.servlet'
+
+    artifactId = 'javax.servlet-api'
+    version = '3.1.0'
+    providedCompileMaker( groupId , artifactId , version )
+
+    artifactId = 'jstl'
+    version = '1.2'
+    runtimeMaker( groupId , artifactId , version )
 
     // db
-    compile("com.zaxxer:HikariCP:${versions.hikariCP}")
-    compile("mysql:mysql-connector-java:${versions.mysqldriver}")
+    groupId = 'com.zaxxer'
+    artifactId = 'HikariCP'
+    version = versions.hikariCP
+    compileMaker( groupId , artifactId , version )
+
+    groupId = 'mysql'
+    artifactId = 'mysql-connector-java'
+    version = versions.mysqldriver
+    compileMaker( groupId , artifactId , version )
 
     // util
-    groupName = 'com.fasterxml.jackson.core'
-    compile("org.projectlombok:lombok:${versions.lombok}")
-    compile("${groupName}:jackson-annotations:${versions.jackson}")
-    compile("${groupName}:jackson-core:${versions.jackson}")
-    compile("${groupName}:jackson-databind:${versions.jackson}")
+    groupId = 'org.projectlombok'
+    artifactId = 'lombok'
+    version = versions.lombok
+    compileMaker( groupId , artifactId , version )
+
+    groupId = 'com.fasterxml.jackson.core'
+    version = versions.jackson
+
+    artifactId = 'jackson-annotations'
+    compileMaker( groupId , artifactId , version )
+    artifactId = 'jackson-core'
+    compileMaker( groupId , artifactId , version )
+    artifactId = 'jackson-databind'
+    compileMaker( groupId , artifactId , version )
 
     // test
-    testCompile("org.springframework:spring-test:${versions.spring}")
-    testCompile("junit:junit:${versions.junit}")
-    compile("ch.qos.logback:logback-classic:${versions.logback}"){
+    groupId = 'junit'
+    artifactId = 'junit'
+    version = versions.junit
+    testCompileMaker( groupId , artifactId , version )
+
+    // log
+    compile( 'ch.qos.logback:logback-classic:'+versions.logback ){
         exclude group: 'org.slf4j', module: 'slf4j-api'
     }
 

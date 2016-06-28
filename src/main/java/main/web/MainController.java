@@ -18,11 +18,11 @@ public class MainController{
         return "index";
     }
 
-//    @GetMapping("/{requestPage}")
-//    String getRequestPage(@PathVariable String requestPage){
-//        System.out.println("requestPage =!!"+requestPage+"!!= requestPage");
-//        return requestPage;
-//    }
+    @GetMapping("/{requestPage}")
+    String getRequestPage(@PathVariable String requestPage){
+        System.out.println("requestPage =!!"+requestPage+"!!= requestPage");
+        return requestPage;
+    }
 
 
 }

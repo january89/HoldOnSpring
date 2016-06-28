@@ -13,8 +13,6 @@ public class WebXmlConfig implements WebApplicationInitializer{
 
     private static final String DISPATCHER_SERVLET_NAME = "dispatcher";
     private static final String ENCODE = "UTF-8";
-    private static final String FORWARD_SLASH = "/";
-    private static final String ASTERISK = "/*";
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
@@ -24,12 +22,12 @@ public class WebXmlConfig implements WebApplicationInitializer{
 
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet(DISPATCHER_SERVLET_NAME, new DispatcherServlet(rootContext));
         dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping(FORWARD_SLASH);
+        dispatcher.addMapping("/");
 
         EnumSet<DispatcherType> dispatcherTypes = EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD);
 
         FilterRegistration.Dynamic characterEncoding = servletContext.addFilter("characterEncoding", EncodingFilter());
-        characterEncoding.addMappingForUrlPatterns(dispatcherTypes, true, ASTERISK);
+        characterEncoding.addMappingForUrlPatterns(dispatcherTypes, true, "/*");
 
         servletContext.addListener(new ContextLoaderListener(rootContext));
 

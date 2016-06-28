@@ -15,16 +15,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/index">메인</a>
+                    <a href="/index">MAIN</a>
                 </li>
                 <li>
-                    <a href="/about">적용기술</a>
+                    <a href="/about">SKILL</a>
                 </li>
                 <li>
-                    <a href="/post">게시물 작성</a>
+                    <a href="/post">POST</a>
                 </li>
                 <li>
-                    <a href="/contact/asd/ddd">이력서</a>
+                    <a href="/resume">RESUME</a>
                 </li>
             </ul>
         </div>
